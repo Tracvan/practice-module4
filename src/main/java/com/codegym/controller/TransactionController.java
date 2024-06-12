@@ -75,8 +75,12 @@ public class TransactionController {
         model.addAttribute("customers", customerList);
         List<Type> typeList = typeService.findAll();
         model.addAttribute("typeList", typeList);
-
         return "updateform";
+    }
+    @PostMapping("/update")
+    public String updateTransaction(@ModelAttribute Transaction transaction){
+        transactionService.save(transaction);
+        return "redirect:/transactions";
     }
 }
 
